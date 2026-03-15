@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> NexDraw </title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div id="landing-page">
+    <section class="hero">
+        <h1> NexDraw </h1>
+        <p>Мы постарались и, исправили баги и добавили функции, о которых вы мечтали.</p>
+        <button class="btn-start" onclick="openEditor()">Запустить Холст</button>
+        <div style="margin-top: 40px; color: #555; font-size: 0.9rem;">Листайте вниз, чтобы узнать больше ↓</div>
+    </section>
+
+    <section class="content-down">
+        <h2>Сделано людьми для талантов или новичков</h2>
+        <p>Привет! Мы — команда NexDraw. Нам надоело, что современные редакторы либо слишком сложные, либо слишком примитивные. Мы создали среду, где всё под рукой. Никаких подписок, никакой регистрации — только чистый холст и ваше творчество.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>50+ инструментов</h3>
+                <p>Все инструменты для хорошего рисования собраны в одном месте. От неона до каллиграфии.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Система Слоев</h3>
+                <p>Рисуйте фон на одном слое, а детали на другом. Ошиблись? Просто сотрите слой, не ломая весь арт.</p>
+            </div>
+            <div class="feature-item">
+                <h3>система сохранения на PNG Формате</h3>
+                <p>здесь нарисовал что хочешь и получаеш рисунок в 1 клик</p>
+            </div>
+            <div class="feature-item">
+                <h3>Зеркальное рисование</h3>
+                <p>Создавайте идеальные лица и симметричные узоры одним движением кисти.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="editor-view">
+    <header>
+        <button class="btn-ui" style="width: auto; margin: 0;" onclick="location.reload()">🏠 Меню</button>
+        <button class="tool-btn" style="width: 45px; height: 45px; margin-left: 15px;" id="undoBtn">↩</button>
+        <button class="tool-btn" style="width: 45px; height: 45px;" id="redoBtn">↪</button>
+        <div style="flex: 1"></div>
+        <button class="btn-ui" style="width: auto; margin: 0; background: var(--accent); color: #000; font-weight: bold;" onclick="downloadImage()">💾 СКАЧАТЬ PNG</button>
+    </header>
+
+    <main>
+        <aside id="toolbar">
+            <button class="tool-btn active" data-tool="brush">🖌️</button>
+            <button class="tool-btn" data-tool="spray">💨</button>
+            <button class="tool-btn" data-tool="marker">🖍️</button>
+            <button class="tool-btn" data-tool="neon">🌈</button>
+            <button class="tool-btn" data-tool="eraser">🧽</button>
+            <hr style="width:70%; border-color:#333">
+            <button class="tool-btn" data-tool="rect">⬜</button>
+            <button class="tool-btn" data-tool="circle">⭕</button>
+            <button class="tool-btn" data-tool="line">📏</button>
+            <button class="tool-btn" data-tool="star">⭐</button>
+            <button class="tool-btn" data-tool="triangle">🔺</button>
+            <button class="tool-btn" data-tool="heart">❤️</button>
+            <hr style="width:70%; border-color:#333">
+            <button class="tool-btn" data-tool="fill">🪣</button>
+            <button class="tool-btn" data-tool="text">Т</button>
+        </aside>
+
+        <div id="workspace">
+            <div id="canvas-container"></div>
+        </div>
+
+        <aside id="right-panel">
+            <label style="font-size: 12px; color: #666;">РАЗМЕР: <span id="sizeVal">10</span>px</label>
+            <input type="range" id="brushSize" min="1" max="150" value="10">
+            
+            <label style="font-size: 12px; color: #666; display: block; margin-top: 15px;">ЦВЕТ:</label>
+            <input type="color" id="mainColor" value="#00f2ff" style="height: 50px; width: 100%; border: none; background: none; cursor: pointer;">
+
+            <div style="margin-top: 20px;">
+                <label style="font-size: 12px; color: #666;">СЛОИ:</label>
+                <div id="layer-list"></div>
+                <button class="btn-ui" onclick="addLayer()" style="margin-top: 10px;">+ Слой</button>
+            </div>
+            
+            <button class="btn-ui" id="mirrorBtn" style="margin-top: 20px;">🪞 Зеркало: ВЫКЛ</button>
+            <button class="btn-ui" style="background: #411;" onclick="clearLayer()">🗑️ Очистить слой</button>
+        </aside>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

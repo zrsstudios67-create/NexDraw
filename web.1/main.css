@@ -1,0 +1,71 @@
+:root {
+    --bg: #050505;
+    --panel: #111;
+    --accent: #00f2ff;
+    --accent-2: #7000ff;
+    --text: #ffffff;
+}
+
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* --- ГЛАВНОЕ МЕНЮ --- */
+.hero {
+    height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
+    text-align: center; padding: 20px;
+}
+
+.hero h1 { 
+    font-size: clamp(3rem, 10vw, 7rem); margin: 0; font-weight: 900; 
+    background: linear-gradient(to right, var(--accent), var(--accent-2)); 
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+}
+
+.hero p { font-size: 1.4rem; color: #aaa; margin-bottom: 30px; }
+
+.btn-start {
+    padding: 22px 60px; font-size: 1.3rem; font-weight: bold;
+    background: linear-gradient(45deg, var(--accent), var(--accent-2));
+    border: none; border-radius: 15px; color: white; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 40px rgba(0, 242, 255, 0.3); text-transform: uppercase;
+}
+
+.btn-start:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 15px 50px rgba(112, 0, 255, 0.6); }
+
+.content-down { padding: 100px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
+.content-down h2 { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+.content-down p { font-size: 1.3rem; color: #ccc; line-height: 1.6; max-width: 800px; margin: 0 auto 50px; }
+
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 50px; }
+.feature-item { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222; transition: 0.3s; text-align: left; }
+.feature-item:hover { border-color: var(--accent); transform: translateY(-10px); background: #161616; }
+.feature-item h3 { color: var(--accent); margin-top: 0; font-size: 1.5rem; }
+.feature-item p { font-size: 1rem; color: #999; margin: 10px 0 0 0; }
+
+/* --- РЕДАКТОР --- */
+#editor-view { display: none; height: 100vh; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: #000; }
+header { background: #0a0a0a; height: 60px; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid #333; gap: 10px; }
+main { display: flex; flex: 1; overflow: hidden; }
+
+#toolbar { width: 85px; background: #0a0a0a; display: flex; flex-direction: column; align-items: center; padding: 15px 0; gap: 10px; border-right: 1px solid #333; overflow-y: auto; }
+.tool-btn { 
+    width: 55px; height: 55px; background: #1a1a1a; border: 1px solid #333; border-radius: 12px; 
+    color: #fff; cursor: pointer; font-size: 1.3rem; transition: 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.tool-btn:hover { border-color: var(--accent); transform: scale(1.1); }
+.tool-btn.active { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent); }
+
+#workspace { flex: 1; background: #161616; display: flex; align-items: center; justify-content: center; overflow: auto; padding: 40px; }
+#canvas-container { position: relative; background: white; box-shadow: 0 0 60px rgba(0,0,0,0.7); }
+canvas { position: absolute; top: 0; left: 0; cursor: crosshair; touch-action: none; }
+
+#right-panel { width: 280px; background: #0a0a0a; border-left: 1px solid #333; padding: 20px; overflow-y: auto; }
+.btn-ui { width: 100%; padding: 12px; background: #222; border: 1px solid #333; color: #fff; border-radius: 10px; cursor: pointer; margin-bottom: 8px; transition: 0.2s; }
+.btn-ui:hover { background: #333; border-color: var(--accent); transform: translateY(-2px); }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+.layer-box { background: #1a1a1a; padding: 10px; border-radius: 10px; margin-top: 5px; border: 1px solid #333; cursor: pointer; display: flex; justify-content: space-between; }
+.layer-box.active { border-color: var(--accent); background: #222; }
